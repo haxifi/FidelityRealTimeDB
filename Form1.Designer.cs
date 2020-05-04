@@ -79,6 +79,7 @@
             this.ageTextBox.Name = "ageTextBox";
             this.ageTextBox.Size = new System.Drawing.Size(106, 20);
             this.ageTextBox.TabIndex = 6;
+            this.ageTextBox.Text = "45";
             // 
             // label3
             // 
@@ -113,6 +114,7 @@
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(364, 20);
             this.surnameTextBox.TabIndex = 2;
+            this.surnameTextBox.Text = "XXXX";
             // 
             // nameTextBox
             // 
@@ -120,6 +122,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(364, 20);
             this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.Text = "TTTT";
             // 
             // userInfoBtn
             // 
@@ -182,10 +185,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 608);
+            this.ClientSize = new System.Drawing.Size(485, 603);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

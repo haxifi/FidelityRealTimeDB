@@ -7,7 +7,11 @@ RethinkDB RealTime
 
 ### Set db param:
     
-    this.dbName = "test";
-    this.tableName = "test";
-    this.connection = new classes.Connection("localhost", 28015, "123456");
+	
+	private string dbName = "test";
+    private string tableName = "test";
+    private string hostname = "localhost";
+    private string password = "123456";
+        
+        
 

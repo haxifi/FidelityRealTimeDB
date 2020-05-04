@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using RethinkDb.Driver;
 
-
 using System.Windows.Forms;
-
+using System.ComponentModel;
 
 namespace Fidelity_RealTime_DB
 {
@@ -15,8 +14,15 @@ namespace Fidelity_RealTime_DB
             InitializeComponent();
         }
 
-        private String dbName;
-        private String tableName;
+       
+        int port = 28015;
+        private string dbName = "test";
+        private string tableName = "test";
+
+        private string hostname = "localhost";
+        private string password = "123456";
+        
+        
 
         private classes.Connection connection;
         public static RethinkDB R = RethinkDB.R;
@@ -24,18 +30,22 @@ namespace Fidelity_RealTime_DB
 
         private  void Form1_Load(object sender, EventArgs e)
         {
-            this.dbName = "test";
-            this.tableName = "test";
-
-            this.connection = new classes.Connection("localhost", 28015, "123456");
-            Task task = Task.Run(async () => { await HandleUpdates(); });        
+            this.connection = new classes.Connection(this.hostname, this.port, this.password);
+            Task task = Task.Run(async () => { await HandleUpdates(); });
         }
+
 
 
         private void insertButton_Click(object sender, EventArgs e)
         {
-            var objData = new dto.User { Name = nameTextBox.Text, Surname = surnameTextBox.Text, Age = Int32.Parse(ageTextBox.Text) };
-            R.Db(this.dbName).Table(this.tableName).Insert(objData).Run(this.connection.getConnection());
+            try
+            {
+                var objData = new dto.User { Name = nameTextBox.Text, Surname = surnameTextBox.Text, Age = Int32.Parse(ageTextBox.Text) };
+                R.Db(this.dbName).Table(this.tableName).Insert(objData).Run(this.connection.getConnection());
+            }catch(FormatException)
+            {
+                MessageBox.Show("Format Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
    
@@ -46,26 +56,27 @@ namespace Fidelity_RealTime_DB
         }
 
 
+      public void addItem(ref ListBox list, String item)
+        {
+            list.Items.Add(item);
+        }
+
+
+
+    
 
       public  async Task HandleUpdates()
       {
+          
          var conn = this.connection.getConnection();
-
          var feed = await R.Db(this.dbName).Table(this.tableName)
                            .Changes().RunChangesAsync<dto.User>(conn);
+
          foreach (var user in feed){
-
-                MessageBox.Show(user.NewValue.Name);
-
                 String item = user.NewValue.Name + " " + user.NewValue.Surname + " " + user.NewValue.Age;
+                updateListBox.BeginInvoke((Action)(() => updateListBox.Items.Add(item)));
+            }
+        }
 
-
-                updateListBox.Items.Add(item);
-
-                
-         }
-     }
-       
-  
     }
 }
