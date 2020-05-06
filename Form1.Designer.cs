@@ -79,7 +79,6 @@
             this.ageTextBox.Name = "ageTextBox";
             this.ageTextBox.Size = new System.Drawing.Size(106, 20);
             this.ageTextBox.TabIndex = 6;
-            this.ageTextBox.Text = "45";
             // 
             // label3
             // 
@@ -114,7 +113,6 @@
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(364, 20);
             this.surnameTextBox.TabIndex = 2;
-            this.surnameTextBox.Text = "XXXX";
             // 
             // nameTextBox
             // 
@@ -122,7 +120,6 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(364, 20);
             this.nameTextBox.TabIndex = 1;
-            this.nameTextBox.Text = "TTTT";
             // 
             // userInfoBtn
             // 
@@ -162,6 +159,7 @@
             this.userInfoTextBox.Size = new System.Drawing.Size(364, 20);
             this.userInfoTextBox.TabIndex = 0;
             this.userInfoTextBox.Text = "ID Here";
+            this.userInfoTextBox.Click += new System.EventHandler(this.userInfoTextBox_Click);
             // 
             // groupBox3
             // 

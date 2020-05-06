@@ -54,15 +54,6 @@ namespace Fidelity_RealTime_DB
            dto.User user = R.Db(this.dbName).Table(this.tableName).Get(userInfoTextBox.Text).Run<dto.User>(this.connection.getConnection());
            if(user != null)  MessageBox.Show("Name:" + user.Name + "\nSurname:" + user.Surname + "\nAge:" + user.Age );
         }
-
-
-      public void addItem(ref ListBox list, String item)
-        {
-            list.Items.Add(item);
-        }
-
-
-
     
 
       public  async Task HandleUpdates()
@@ -78,5 +69,9 @@ namespace Fidelity_RealTime_DB
             }
         }
 
+        private void userInfoTextBox_Click(object sender, EventArgs e)
+        {
+            if (userInfoTextBox.Text == "ID Here") userInfoTextBox.Text = String.Empty;
+        }
     }
 }
